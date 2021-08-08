@@ -1,0 +1,17 @@
+#drag {
+    width: 380px;
+    height: 200px;
+    border: 1px solid #eee;
+    position: relative;
+}
+#drag::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    /*background: red;*/
+    cursor: e-resize;
+}

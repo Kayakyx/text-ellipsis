@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态宽度文本超出显示...</title>
+    <link rel="stylesheet" href="css/darg.css">
+    <style>
+        /*html, body {*/
+        /*    margin: 0;*/
+        /*}*/
+
+        /* --- base-demo --- */
+        .base-demo {
+            /*width: 500px;*/
+            /* 或 % */
+            width: 30%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        /* --- base-demo end --- */
+
+        .table .row {
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .table .row  div:nth-of-type(1) {
+            width: 80px;
+        }
+
+        .table .row  div:nth-of-type(2) {
+            flex: 1 0 100px;
+            /* 上面这条语句是 下面的简写
+            flex-grow: 1; flex 的扩展量
+            flex-shrink: 0; flex 的收缩量
+            flex-basis: 100px; 项目的基础长度
+            总结：基础长度为 100px 小于基础长度时不允许收缩，空间大于100px时 按照 1的扩展量扩展
+            详见： https://www.runoob.com/cssref/css3-pr-flex.html
+            */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .table .row  div:nth-of-type(3) {
+            margin-left: 6%;
+            /*margin-left: 20px;*/
+            flex: 0 1 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <h3>基本的超出显示... 示例</h3>
+    <div class="base-demo">
+        1.指定宽度 2. overflow 设置为 hidden 3. 文本设置不宽行 white-space 设置为 nowrap 4. text-overflow 设置为 ellipsis
+    </div>
+
+    <h3>通过 flex 布局实现不限宽度超出... (拖动右边框测试)</h3>
+    <div id="drag">
+        <div class="table">
+            <div class="row">
+                <div>ID</div>
+                <div>人物介绍</div>
+                <div>名字</div>
+            </div>
+
+            <div class="row">
+                <div>1</div>
+                <div>孙悟空是中国明代小说家吴承恩的著作《西游记》中的角色之一</div>
+                <div>孙悟空</div>
+            </div>
+            <div class="row">
+                <div>2</div>
+                <div>玄奘（原名：陈玄奘）（602年—644年/664年），唐朝著名的三藏法师</div>
+                <div>唐僧</div>
+            </div>
+            <div class="row">
+                <div>3</div>
+                <div>猪八戒是吴承恩所作《西游记》中的角色。法号悟能，是唐僧的二徒弟</div>
+                <div>猪八戒</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/drag.js"></script>
+    <script>
+        initDrag('#drag')
+    </script>
+</body>
+</html>
